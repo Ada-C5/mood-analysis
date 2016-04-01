@@ -56,7 +56,8 @@ def happy_days(words)
     break if hap_days == 3
   end
 
-  "It takes #{total_days} days for 3 happy days to occur."
+  return "It takes #{total_days} days for 3 happy days to occur." if hap_days == 3
+  return "There were not 3 happy days."
 
 end
 
