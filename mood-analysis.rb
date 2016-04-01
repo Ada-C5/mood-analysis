@@ -26,6 +26,7 @@ end
 def happy_days(journal)
   entries = 0
   happy_count = 0
+  # wanted to do this with reduce but didn't get it figuerd out :/
   journal.each do |entry|
     happy_count += 1 if analyze_mood(strip_punctuation(entry)) == ":-)"
     entries += 1
