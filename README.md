@@ -69,6 +69,7 @@ After writing this method, our new result should be:
 ```
 
 **think**: Where should we call `strip_punctuation`? Does it matter? Why?
+I think we should call strip_punctuation inside of the analyze_mood method, anytime before the .each loop so the loop doesn't analyze any words that still have the punctuation attached.
 
 3. Write a method called `happy_days` to determine how many logged entries it takes until there have been three :-) happy days.
 
