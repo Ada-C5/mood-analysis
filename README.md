@@ -89,5 +89,7 @@ The most common mood is :-)
 ```
 
 **think**: Should you use an array or a hash to solve this problem? Why?
+I used a hash but its values are arrays. I needed the hash to keep track of which emote applied to which feeling, and I needed the array to count how many of each emote there were.
 
 **think**: What if we eventually want to add feelings to our analysis? Can we write this code in a way that will prevent us from having to re-write it later?
+That's why I made it so the methods take in the list_of_moods as an argument. If I add more moods to the list later, I can still use those methods without needing to rewrite them.
