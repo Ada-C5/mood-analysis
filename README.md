@@ -84,7 +84,7 @@ It takes 5 entries for 3 happy days to occur
 
 **think**: What are you going to do if there aren't at least 3 happy days? Where do you need to handle that case?
 
-I decided to write a simple informative message saying there weren't enough happy days, and I check to see if we even need to iterate through the information first, before writing the loop. That way I don't end up running a loop and getting an error because it can't complete (because the final condition, enough happy days, can't be met).
+I check the happy days iteration variable after the iteration is finished, and deliver a message that 3 happy days didn't exist if the whole loop doesn't deliver 3 happy days. This seems to be the least resource consuming way to check if 3 happy days happen.
 
 4. Write a method called `overall_mood` to determine the most common mood across all logged entries.
 
@@ -95,4 +95,8 @@ The most common mood is :-)
 
 **think**: Should you use an array or a hash to solve this problem? Why?
 
+I used a hash of arrays because I wanted to access collected values by total, and this way I can call a key to see which one holds the most values.
+
 **think**: What if we eventually want to add feelings to our analysis? Can we write this code in a way that will prevent us from having to re-write it later?
+
+I *believe* I have written code that will allow me to simply slot in more moods and smileys and then continue to run as is.
