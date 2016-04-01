@@ -86,6 +86,8 @@ It takes 5 entries for 3 happy days to occur
 
 **think**: What are you going to do if there aren't at least 3 happy days? Where do you need to handle that case?
 
+I fixed my loop to break when happy_faces variable has the value of 3, then modified the conditional at the end to return that there aren't enough happy days if happy_faces doesn't equal 3.
+
 4. Write a method called `overall_mood` to determine the most common mood across all logged entries.
 
 Your output could be something like:
@@ -95,4 +97,8 @@ The most common mood is :-)
 
 **think**: Should you use an array or a hash to solve this problem? Why?
 
+I feel like using an array is easier to push the result of analyze_mood into it, then just calculate the length of the arrays.
+
 **think**: What if we eventually want to add feelings to our analysis? Can we write this code in a way that will prevent us from having to re-write it later?
+
+We could probably put the emotion faces into constants and use them throughout the methods. 
