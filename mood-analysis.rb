@@ -41,6 +41,15 @@ def print_all_moods(words)
   words.collect { |statement| statement[0..4] + " " + analyze_mood(statement)}
 end
 
+def happy_days(words)
+  # Write a method called `happy_days` to determine how many logged entries it takes until there have 
+  # been three :-) happy days.
+
+
+
+  # **think**: What are you going to do if there aren't at least 3 happy days? Where do you need to handle that case?
+end
+
 
 
 puts print_all_moods(text)
