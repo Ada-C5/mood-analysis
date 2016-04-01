@@ -1,12 +1,17 @@
 FEELINGS = {
-  happy: %w(yay good great),
-  sad: %w(terrible awful horrible)
+  happy: ["yay", "good", "great"],
+  sad: ["terrible", "awful", "horrible"]
 }
+
+def strip_punctuation(words)
+  words = words.gsub(/[!.,#]/i, '')
+end
 
 def analyze_mood(words)
   happy = 0
   sad = 0
   words.downcase!
+  words = strip_punctuation(words)
   words.split(" ").each do |word|
     if FEELINGS[:happy].include? word
       happy += 1
@@ -17,10 +22,6 @@ def analyze_mood(words)
   return ":-)" if happy > sad
   return ":-(" if happy < sad
   return ":-|"
-end
-
-def strip_punctiation(words)
-  words.gsub(/[!.,#]/i, '')
 end
 
 text = [
