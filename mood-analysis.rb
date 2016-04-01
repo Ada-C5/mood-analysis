@@ -30,7 +30,7 @@ text = [
 
 # "smiley collector": iterate a corpus, analyze its mood, store return in an array.
 def smilies_over_corpus(words)
-  words.collect { |statement| analyze_mood(statement)}
+  words.collect { |statement| statement[0..4] + " " + analyze_mood(statement)}
 end
 
 puts smilies_over_corpus(text)
