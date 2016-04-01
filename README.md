@@ -69,6 +69,8 @@ After writing this method, our new result should be:
 
 **think**: Where should we call `strip_punctuation`? Does it matter? Why?
 
+I chose to call it in `#print_all_moods` because it only needs to modify the local copy that the method uses. However, since I want print_all_moods to do something with the modified data, I put it outside the loop that would analyze the strings. 
+
 3. Write a method called `happy_days` to determine how many logged entries it takes until there have been three :-) happy days.
 
 Your output could be something like:
