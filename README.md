@@ -56,6 +56,8 @@ Your result will look like:
 
 **think**: Why does 03/13 come out as _sad_ when it should be _happy_? How could we fix this?
 
+It's not recognizing the good words because `include?` in `#analyze_mood` tests if there's a perfect match. We need to strip out interfering punctuation (while leaving the slash in the date).
+
 2. To make the results a little more accurate, let's write and utilize a method called `strip_punctuation` to strip out the punctuation that affects the results. Namely, remove  exclamation marks (!), periods (.), commas (,), and hashtags (#).
 
 Your method should take a string as an argument and return the string without the above mentioned punctuation.
@@ -69,7 +71,9 @@ After writing this method, our new result should be:
 
 **think**: Where should we call `strip_punctuation`? Does it matter? Why?
 
-I chose to call it in `#print_all_moods` because it only needs to modify the local copy that the method uses. However, since I want print_all_moods to do something with the modified data, I put it outside the loop that would analyze the strings. 
+I chose to call it in `#print_all_moods` because it only needs to modify the local copy that the method uses. However, since I want `#print_all_moods` to do something with the modified data, I put it outside the loop that would analyze the strings. 
+
+This usage also seems in keeping with the idea that we should do our best to call methods and not data, as per our discussions about the Metz book. (Rather than trusting a second variable is reliable, and storing the result of `#strip_punctuation` in it, I am calling the method directly on the data to be analyzed. I hope I'm expressing myself.)
 
 3. Write a method called `happy_days` to determine how many logged entries it takes until there have been three :-) happy days.
 
