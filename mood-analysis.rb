@@ -40,15 +40,33 @@ def happy_days(list_of_moods)
   end
 end
 
-# def happy_days(tweet)
-#   # how many tweets until there have been 3 happy days?
-#   # "It takes 5 entries for 3 happy days to occur"
-#   number_of_happy_days = 0
-#   number_of_tweets = 0
-#   until number_of_happy_days == 3
-#     number_of_happy_days += 1 if analyze_mood(tweet) == ":-)"
-#   end
-# end
+def overall_mood(list_of_moods)
+  # determines most common mood across all tweets
+  # "The most common mood is :-)"
+
+  mood_hash = {
+    happy: [],
+    sad: [],
+    neutral: []
+  }
+
+  list_of_moods.each do |mood|
+    if mood == ":-)"
+      mood_hash[:happy] << mood
+    elsif mood == ":-("
+      mood_hash[:sad] << mood
+    elsif mood == ":-|"
+      mood_hash[:neutral] << mood
+    end
+  end
+
+  max_pair = mood_hash.max_by { |key, value|
+    value.length
+  }
+
+  "The most common mood is #{max_pair[1][0]}"
+end
+
 
 text = [
   # I considered these to be "tweets" throughout the program
@@ -67,9 +85,10 @@ text.each do |tweet|
   puts "#{tweet[1..5]} #{analyze_mood(strip_punctuation(tweet))}"
 end
 
-# using this variable as happy_days parameter
-list_of_moods = text.map do |tweet|
+# this variable will be used as happy_days parameter
+moods_array = text.map do |tweet|
   analyze_mood(strip_punctuation(tweet))
 end
 
-puts happy_days(list_of_moods)
+puts happy_days(moods_array)
+puts overall_mood(moods_array)
