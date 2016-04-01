@@ -1,6 +1,6 @@
 FEELINGS = {
-  happy: %w(yay, good, great),
-  sad: %w(terrible, awful, horrible)
+  happy: %w(yay good great),
+  sad: %w(terrible awful horrible)
 }
 
 def analyze_mood(words)
@@ -19,6 +19,10 @@ def analyze_mood(words)
   return ":-|"
 end
 
+def strip_punctiation(words)
+  words.gsub(/[!.,#]/i, '')
+end
+
 text = [
   "03/01 I'm having a terrible horrible no good day.",
   "03/13 Yesterday was horrible, but today is great! Yay!",
@@ -28,5 +32,6 @@ text = [
   "05/11 Yay, yay, yay! I'm having a awfuly great day."
 ]
 
-puts analyze_mood(text[0])
-puts analyze_mood(text[1])
+text.each do |line|
+  puts line[0..4] + " " + analyze_mood(line)
+end
