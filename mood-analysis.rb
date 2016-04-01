@@ -1,12 +1,13 @@
 FEELINGS = {
-  happy: %w(yay, good, great),
-  sad: %w(terrible, awful, horrible)
+  happy: %w(yay good great),
+  sad: %w(terrible awful horrible)
 }
 
 def analyze_mood(words)
   happy = 0
   sad = 0
   words.downcase!
+  words = strip_punctuation(words)
   words.split(" ").each do |word|
     if FEELINGS[:happy].include? word
       happy += 1
@@ -19,6 +20,15 @@ def analyze_mood(words)
   return ":-|"
 end
 
+def strip_punctuation(words)
+  words.gsub(/[!.#,]/, "")
+end
+
+def happy_days
+  
+end
+
+
 text = [
   "03/01 I'm having a terrible horrible no good day.",
   "03/13 Yesterday was horrible, but today is great! Yay!",
@@ -28,5 +38,6 @@ text = [
   "05/11 Yay, yay, yay! I'm having a awfuly great day."
 ]
 
-puts analyze_mood(text[0])
-puts analyze_mood(text[1])
+text.each do |line|
+  puts line[0..5] + analyze_mood(line)
+end
