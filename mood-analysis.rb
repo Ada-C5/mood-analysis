@@ -1,6 +1,6 @@
 FEELINGS = {
-  happy: %w(yay, good, great),
-  sad: %w(terrible, awful, horrible)
+  happy: %w(yay good great),
+  sad: %w(terrible awful horrible)
 }
 
 def analyze_mood(words)
@@ -28,5 +28,13 @@ text = [
   "05/11 Yay, yay, yay! I'm having a awfuly great day."
 ]
 
-puts analyze_mood(text[0])
-puts analyze_mood(text[1])
+
+def smilies_over_corpus(words)
+  smilies = []
+  words.length.times do |statement|
+    smilies << analyze_mood(words[statement])
+  end
+  smilies
+end
+
+puts smilies_over_corpus(text)
