@@ -28,9 +28,18 @@ text = [
   "05/11 Yay, yay, yay! I'm having a awfuly great day."
 ]
 
+def strip_punctuation(words)
+  # 2. To make the results a little more accurate, let's write and utilize a method called `strip_punctuation` to 
+  # strip out the punctuation that affects the results. Namely, remove  exclamation marks (!), periods (.), commas (,), 
+  # and hashtags (#).
+  words.collect { |statement| statement.gsub(/[^\/A-Za-z0-9\s]/i, "") }
+end
+
+text2 = strip_punctuation(text)
+
 # "smiley collector": iterate a corpus, analyze its mood, store return in an array.
 def smilies_over_corpus(words)
   words.collect { |statement| statement[0..4] + " " + analyze_mood(statement)}
 end
 
-puts smilies_over_corpus(text)
+puts smilies_over_corpus(text2)
