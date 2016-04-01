@@ -46,7 +46,7 @@ end
 def overall_mood
   all = {
     positive: 0,
-    negative: 0
+    negative: 0,
     meh: 0
   }
   text.each do |aline|
@@ -59,9 +59,9 @@ def overall_mood
     else
       all[:meh] +=1
     end
-  end
+    end
   largest = all.max_by{|key, value| value}
-  puts "#{largest.keys} is most common mood" 
+  puts "#{largest.keys} is most common mood"
 end
 
 
@@ -78,4 +78,5 @@ text.each do |aline|
   line = strip_punctuation(aline)
   face = analyze_mood(line)
   puts "#{line[0,2]}/#{line[2,3]} #{face}"
+end
 end
