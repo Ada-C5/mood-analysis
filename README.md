@@ -34,7 +34,7 @@ What's the Data Type of the following?
 | words.split(" ")           | Array
 | FEELINGS[:sad]             | Array
 | FEELINGS[:happy].include?  | Boolean
-| analyze_mood(text)         | idk
+| analyze_mood(text)         | String
 
 ### Explaining the Code
 | Question               | Answer
@@ -79,6 +79,7 @@ It takes 5 entries for 3 happy days to occur
 ```
 
 **think**: What are you going to do if there aren't at least 3 happy days? Where do you need to handle that case?
+See my code for how I handled this case. If the happy_days method did not produce at least three :-)s when analyzing the text, then a different value is returned.
 
 4. Write a method called `overall_mood` to determine the most common mood across all logged entries.
 
@@ -88,5 +89,7 @@ The most common mood is :-)
 ```
 
 **think**: Should you use an array or a hash to solve this problem? Why?
+I used an array, however I think you could use a hash just as well. I chose an array so I could use enumerable methods on it, and I could not think of a reason why key-value pairs would be neccessary.
 
 **think**: What if we eventually want to add feelings to our analysis? Can we write this code in a way that will prevent us from having to re-write it later?
+The overall_mood method can be rewritten to use another method instead of analyze_mood. So a new method called analyze_feelings, for example, could replace analyze_mood in this method. I don't know if I understand what this question is asking.

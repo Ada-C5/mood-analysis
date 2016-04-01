@@ -25,8 +25,6 @@ def analyze_mood(words)
 end
 
 def happy_days(text)
-  #text needs to remain in order as an array.
-  #analyze_mood called on each line of text.
   smile_count = 0
   day_count = 0
   text.each do |line|
@@ -43,17 +41,16 @@ def happy_days(text)
   else
     return "Sorry, no happy days..."
   end
-  #save the return value
-  #when return value of :-) = 3, puts index of that line + 1 for number of days.
 end
-# 3. Write a method called `happy_days` to determine how many logged entries
-# it takes until there have been three :-) happy days.
-#
-# Your output could be something like:
-# ```
-# It takes 5 entries for 3 happy days to occur
-# ```
 
+def overall_mood(text)
+moods_array = []
+  text.each do |line|
+    moods_array << analyze_mood(line)
+  end
+overall_mood = moods_array.max_by{|mood| moods_array.count(mood)}
+return "The most common mood is #{overall_mood}"
+end
 
 text = [
   "03/01 I'm having a terrible horrible no good day.",
