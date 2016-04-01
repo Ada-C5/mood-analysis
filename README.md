@@ -84,6 +84,8 @@ It takes 5 entries for 3 happy days to occur
 
 **think**: What are you going to do if there aren't at least 3 happy days? Where do you need to handle that case?
 
+I decided to write a simple informative message saying there weren't enough happy days, and I check to see if we even need to iterate through the information first, before writing the loop. That way I don't end up running a loop and getting an error because it can't complete (because the final condition, enough happy days, can't be met).
+
 4. Write a method called `overall_mood` to determine the most common mood across all logged entries.
 
 Your output could be something like:
