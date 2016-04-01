@@ -1,6 +1,6 @@
 FEELINGS = {
-  happy: %w(yay good great),
-  sad: %w(terrible awful horrible)
+  happy: [%w(yay good great), 0, ":-)"],
+  sad: [%w(terrible awful horrible), 0, ":-("]
 }
 
 @text = [
@@ -17,22 +17,25 @@ def strip_punctuation(words)
 end
 
 def analyze_mood(words)
-  happy = 0
-  sad = 0
   words.downcase!
   words_stripped = strip_punctuation(words)
+
   words_stripped.split(" ").each do |word|
-    if FEELINGS[:happy].include? word
-      happy += 1
-    elsif FEELINGS[:sad].include? word
-      sad += 1
+    FEELINGS.values.each do |array|
+      if array[0].include? word
+        array[1] += 1
+      end
     end
   end
 
-  return ":-)" if happy > sad
-  return ":-(" if happy < sad
-  return ":-|"
+  more_matches = FEELINGS.values.max_by { |array| array[1] }
+
+  # Need to work on determine if neutral 
+
+  return more_matches[2]
+
 end
+
 
 def print_moods
   @text.each do |each_entry|
