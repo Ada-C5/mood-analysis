@@ -28,13 +28,9 @@ text = [
   "05/11 Yay, yay, yay! I'm having a awfuly great day."
 ]
 
-
+# "smiley collector": iterate a corpus, analyze its mood, store return in an array.
 def smilies_over_corpus(words)
-  smilies = []
-  words.length.times do |statement|
-    smilies << analyze_mood(words[statement])
-  end
-  smilies
+  words.collect { |statement| analyze_mood(statement)}
 end
 
 puts smilies_over_corpus(text)
