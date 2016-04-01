@@ -44,12 +44,29 @@ end
 def happy_days(words)
   # Write a method called `happy_days` to determine how many logged entries it takes until there have 
   # been three :-) happy days.
+  all_moods = words.collect { |statement| analyze_mood(statement)}
+  return "3 happy days were not achieved in this collection." if all_moods.count { |mood| mood == ":-)" } < 3
 
 
+  day_count = 0
+  smiley_count = 0
+  
+  all_moods.length.times do |i|
+    if smiley_count < 3  
+      if all_moods[i] == ":-)"
+        smiley_count += 1
+      end
+    day_count += 1
+    else
+      break
+    end
+    return "It took #{day_count} days for 3 happy days to occur."
+  end
 
-  # **think**: What are you going to do if there aren't at least 3 happy days? Where do you need to handle that case?
+
 end
 
 
 
 puts print_all_moods(text)
+puts happy_days(text)
