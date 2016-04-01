@@ -1,12 +1,16 @@
 FEELINGS = {
-  happy: %w(yay, good, great),
-  sad: %w(terrible, awful, horrible)
+  happy: %w(yay good great),
+  sad: %w(terrible awful horrible)
 }
 
 def analyze_mood(words)
   happy = 0
   sad = 0
   words.downcase!
+
+  # using regex to extract the punctuation
+  words.gsub!(/[^[:word:]\s]/, ' ')
+
   words.split(" ").each do |word|
     if FEELINGS[:happy].include? word
       happy += 1
@@ -14,9 +18,42 @@ def analyze_mood(words)
       sad += 1
     end
   end
+
   return ":-)" if happy > sad
   return ":-(" if happy < sad
   return ":-|"
+end
+
+def happy_days(result)
+  happy_days = 0
+  day_count = 0
+
+  result.each do |journal|
+
+    mood = journal[1]
+
+    if happy_days < 3
+      day_count += 1
+       happy_days += 1 if mood == ":-)"
+    end
+  end
+  day_count
+end
+
+
+def overall_mood(result)
+
+  overall_mood_result = {}
+  overall_mood_result[":-)"] = 0
+  overall_mood_result[":-|"] = 0
+  overall_mood_result[":-("] = 0
+
+    result.each do |journal|
+      overall_mood_result[journal[1]] += 1
+    end
+
+    overall_mood_result.max_by {|mood, count| count}.first
+
 end
 
 text = [
@@ -28,5 +65,14 @@ text = [
   "05/11 Yay, yay, yay! I'm having a awfuly great day."
 ]
 
-puts analyze_mood(text[0])
-puts analyze_mood(text[1])
+result = text.map do |day|
+  date = day.split(" ").first
+  mood = analyze_mood(day)
+  puts
+  puts "#{date} #{mood}"
+
+  [date, mood]
+end
+
+puts "It takes #{happy_days(result)} entries for 3 happy days to occur"
+puts "The most common mood is #{overall_mood(result)}"
