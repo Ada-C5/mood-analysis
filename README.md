@@ -9,40 +9,40 @@ Explain what is happening on each of the following lines in the code.
 
 | Line # | What's happening?
 |:------:|-------------------
-| 1      |
-| 2      |
-| 3      |
-| 6      |
-| 7-8    |
-| 9      |
-| 10     |
-| 11     |
-| 12     |
-| 13     |
-| 14     |
-| 17-19  |
+| 1      | constant variable storing a hash of arrays
+| 2      | key, value assigned to an array
+| 3      | key, value assigned to an array
+| 6      | method signature with a parameter of one
+| 7-8    | local variable set to 0 within the method
+| 9      | method called on the passed in word that is being stored in the local variable word.
+| 10     | method call, to look at each word in the array
+| 11     | is the conditional being met
+| 12     | increment happy count
+| 13     | is the conditional being met
+| 14     | increment sad count
+| 17-19  | this will return the value of either a happy or sad face if the conditional is meet. if no conditional is met, it will return with a neutral face
 
 ### Data Types
 What's the Data Type of the following?
 
 | Code                       | Data Type
 |----------------------------|-----------
-| FEELINGS                   |
-| :sad                       |
-| happy                      |
-| words                      |
-| words.split(" ")           |
-| FEELINGS[:sad]             |
-| FEELINGS[:happy].include?  |
-| analyze_mood(text)         |
+| FEELINGS                   | hash
+| :sad                       | symbol
+| happy                      | fixnum
+| words                      | string
+| words.split(" ")           | array of strings
+| FEELINGS[:sad]             | array
+| FEELINGS[:happy].include?  | boolean
+| analyze_mood(text)         | method call
 
 ### Explaining the Code
 | Question               | Answer
 |------------------------|-------
-| Why do we need line 9? |
-| What is the relationship between `words` and `word` (line 10)? |
-| Why doesn't line 19 have an associated if/condition? |
-| What is the relationship between `text[0]`, `text[1]`, and `words`? |
+| Why do we need line 9? | all the words are the same text
+| What is the relationship between `words` and `word` (line 10)? | word is the collection of the words in an array, word one word in the words array
+!!| Why doesn't line 19 have an associated if/condition? | it is the return value if the conditional is not met
+!!| What is the relationship between `text[0]`, `text[1]`, and `words`? | words is getting the value of text value of what is needed to be put in
 
 ### Assignment: Requirements
 1. Replace lines 31 and 32 and write a loop to print out each day and the emoticon that is associated by analyzing the mood of that day.
@@ -87,4 +87,7 @@ The most common mood is :-)
 
 **think**: Should you use an array or a hash to solve this problem? Why?
 
+I believe that arrays are more useful when using data and it involves collecting a collection of elements.
+
 **think**: What if we eventually want to add feelings to our analysis? Can we write this code in a way that will prevent us from having to re-write it later?
+Yes! 
