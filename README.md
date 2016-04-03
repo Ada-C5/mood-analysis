@@ -9,40 +9,40 @@ Explain what is happening on each of the following lines in the code.
 
 | Line # | What's happening?
 |:------:|-------------------
-| 1      |
-| 2      |
-| 3      |
-| 6      |
-| 7-8    |
-| 9      |
-| 10     |
-| 11     |
-| 12     |
-| 13     |
-| 14     |
-| 17-19  |
+| 1      |setting a constant with hash
+| 2      |key, value (an array) pair
+| 3      |key, value (an array) pair
+| 6      |defining method with parameter (word)
+| 7-8    |setting local variable to zero
+| 9      |making all letters in parameter lowercase
+| 10     |for each word (argument) split on the space  and  iterate each one
+| 11     |does the word being iterated included in Constant FEELINGS with :happy or (yay, good, great)?
+| 12     |increments count for happy
+| 13     |does the word being iterated included in Constant FEELINGS with :sad or (terrible, awful, horrible)?
+| 14     |increments count for sad
+| 17-19  |explicit returns based on the happy sad values count tally
 
 ### Data Types
 What's the Data Type of the following?
 
 | Code                       | Data Type
 |----------------------------|-----------
-| FEELINGS                   |
-| :sad                       |
-| happy                      |
-| words                      |
-| words.split(" ")           |
-| FEELINGS[:sad]             |
-| FEELINGS[:happy].include?  |
-| analyze_mood(text)         |
+| FEELINGS                   |hash
+| :sad                       |symbol
+| happy                      |fixnum
+| words                      |string
+| words.split(" ")           |array of strings
+| FEELINGS[:sad]             |array
+| FEELINGS[:happy].include?  |Boolean
+| analyze_mood(text)         |string
 
 ### Explaining the Code
 | Question               | Answer
 |------------------------|-------
-| Why do we need line 9? |
-| What is the relationship between `words` and `word` (line 10)? |
-| Why doesn't line 19 have an associated if/condition? |
-| What is the relationship between `text[0]`, `text[1]`, and `words`? |
+| Why do we need line 9? |to make sure we are evaluating based on same text type
+| What is the relationship between `words` and `word` (line 10)? | words refers to the array, while word is each member of the array that is being evaluated
+| Why doesn't line 19 have an associated if/condition? |it acts as default if prior conditions are not met
+| What is the relationship between `text[0]`, `text[1]`, and `words`? |text [0] and text[1] are the elements of an array that contain the parameters or 'words'
 
 ### Assignment: Requirements
 1. Replace lines 31 and 32 and write a loop to print out each day and the emoticon that is associated by analyzing the mood of that day.
