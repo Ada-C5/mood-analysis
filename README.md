@@ -71,7 +71,7 @@ After writing this method, our new result should be:
 
 **think**: Where should we call `strip_punctuation`? Does it matter? Why?
 
-I call it inside the analyze_mood method at the top so that the rest of the method uses the correct version of words.
+I call it inside the analyze_mood method at the top so that the rest of the method uses the correct version of words. You could call it before the mood-analysis method and then use its output but we kniw
 
 3. Write a method called `happy_days` to determine how many logged entries it takes until there have been three :-) happy days.
 

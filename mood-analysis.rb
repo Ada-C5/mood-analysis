@@ -36,12 +36,13 @@ def happy_days(text_array)
   end
   happydays < 3 ? eval = "Oh no! Out of #{days} days there were #{happydays} happy days." : eval = "It takes #{days} days for 3 happy days to occur."
   puts eval
+  happydays
 end
 
 def overall_mood(text_array)
   mood = text_array.map { |entry| analyze_mood(entry) }.group_by(&:itself).values.max_by(&:size).last
   puts "The most common mood is #{mood}."
-  return mood
+  mood
 end
 
 text = [
@@ -59,5 +60,8 @@ text.each do |entry|
 end
 
 happy_days(text)
+puts happy_days(text)
+
 
 overall_mood(text)
+puts overall_mood(text)
